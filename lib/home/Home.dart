@@ -4,9 +4,9 @@ import 'package:bazimat_vendor_app/utils/AppColors.dart';
 import 'package:bazimat_vendor_app/utils/Const.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class Home extends StatefulWidget {
   const Home({Key key}) : super(key: key);
@@ -21,8 +21,16 @@ class _HomeState extends State<Home> {
   var dio = Dio();
   bool homeLoad = false;
   List dashBoardData;
-  RefreshController _refreshController =
-      RefreshController(initialRefresh: false);
+
+  _onRefresh() {
+    print("onRefresh called...");
+    Future.delayed(Duration(milliseconds: 1000));
+    setState(() {
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => Home()), (route) => false);
+    });
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -68,15 +76,11 @@ class _HomeState extends State<Home> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              child: SmartRefresher(
-                enablePullDown: true,
-                header: WaterDropHeader(),
-                controller: _refreshController,
-                // ignore: missing_return
-                onRefresh: _onRefresh,
+          : RefreshIndicator(
+              onRefresh: () => _onRefresh(),
+              child: Container(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
                 child: GridView.builder(
                     itemCount: dashBoardData.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -144,14 +148,5 @@ class _HomeState extends State<Home> {
     } on DioError catch (e) {
       print(e.toString());
     }
-  }
-
-  void _onRefresh() async {
-    await Future.delayed(Duration(milliseconds: 1000));
-    _refreshController.refreshCompleted();
-    setState(() {
-      Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => Home()), (route) => false);
-    });
   }
 }
