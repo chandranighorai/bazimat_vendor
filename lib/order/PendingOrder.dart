@@ -16,6 +16,17 @@ class PendingOrder extends StatefulWidget {
 class _PendingOrderState extends State<PendingOrder> {
   Future<PendingModel> _pendingOrderList;
   var dio = Dio();
+
+  _onRefresh() {
+    Future.delayed(Duration(milliseconds: 1000));
+    setState(() {
+      _pendingOrderList = _getPendingOrderList();
+      // Navigator.of(context).pushAndRemoveUntil(
+      //     MaterialPageRoute(builder: (context) => PendingOrder()),
+      //     (route) => false);
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -28,38 +39,43 @@ class _PendingOrderState extends State<PendingOrder> {
       // appBar: AppBar(
       //   title: Text("Pending Order"),
       // ),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        color: Colors.white,
-        child: FutureBuilder(
-          initialData: null,
-          future: _pendingOrderList,
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            if (snapshot.hasData) {
-              var respData = snapshot.data.respData;
-              //var resturentList = snapshot.data.respData.restaurants;
-              print("respData..." + respData.length.toString());
-              // print("resturent..." + resturentList.toString());
-              return respData.length == 0
-                  ? Center(
-                      child: Text(
-                        "No Order Found",
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    )
-                  : ListView.builder(
-                      itemCount: respData.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return PendingList(
-                            resturentData: respData[index], allData: fetchData);
-                      });
-            } else {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-          },
+      body: RefreshIndicator(
+        onRefresh: () => _onRefresh(),
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          color: Colors.white,
+          child: FutureBuilder(
+            initialData: null,
+            future: _pendingOrderList,
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              if (snapshot.hasData) {
+                var respData = snapshot.data.respData;
+                //var resturentList = snapshot.data.respData.restaurants;
+                print("respData..." + respData.length.toString());
+                // print("resturent..." + resturentList.toString());
+                return respData.length == 0
+                    ? Center(
+                        child: Text(
+                          "No Order Found",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      )
+                    : ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: respData.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return PendingList(
+                              resturentData: respData[index],
+                              allData: fetchData);
+                        });
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
+          ),
         ),
       ),
     );

@@ -28,7 +28,7 @@ class _DeliveredOrderState extends State<DeliveredOrder> {
       //   title: Text("Delivered"),
       // ),
       body: Container(
-        height: MediaQuery.of(context).size.height,
+        //height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         color: Colors.white,
         child: FutureBuilder(
@@ -48,6 +48,8 @@ class _DeliveredOrderState extends State<DeliveredOrder> {
                       ),
                     )
                   : ListView.builder(
+                      //itemCount: 1,
+                      shrinkWrap: true,
                       itemCount: respData.length,
                       itemBuilder: (BuildContext context, int index) {
                         return DeliveredList(dataList: respData[index]);
@@ -75,6 +77,7 @@ class _DeliveredOrderState extends State<DeliveredOrder> {
       print("token..." + url.toString());
       var response = await dio.get(url,
           options: Options(headers: {"Authorization": "Bearer $token"}));
+      print("response data in delivered order..." + response.data.toString());
       if (response.data["state"] == 0) {
         return DeliveredModel.fromJson(response.data);
       }

@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:bazimat_vendor_app/order/DeliverDataList.dart';
 import 'package:bazimat_vendor_app/order/DeliveredModel.dart';
 import 'package:bazimat_vendor_app/utils/AppColors.dart';
@@ -31,6 +30,8 @@ class DeliveredList extends StatelessWidget {
               height: MediaQuery.of(context).size.width * 0.02,
             ),
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width / 2,
@@ -50,9 +51,9 @@ class DeliveredList extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
-              height: MediaQuery.of(context).size.width * 0.01,
-            ),
+            // SizedBox(
+            //   height: MediaQuery.of(context).size.width * 0.01,
+            // ),
             // Container(
             //   width: MediaQuery.of(context).size.width / 1.5,
             //   child: Text(
@@ -67,15 +68,13 @@ class DeliveredList extends StatelessWidget {
             ),
             Container(
               width: MediaQuery.of(context).size.width,
-              child: Expanded(
-                child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: dataList.cartDetails.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return DeliverDataList(
-                          cartData: dataList.cartDetails[index]);
-                    }),
-              ),
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: dataList.cartDetails.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return DeliverDataList(
+                        cartData: dataList.cartDetails[index]);
+                  }),
             ),
             SizedBox(
               height: MediaQuery.of(context).size.width * 0.01,

@@ -10,6 +10,13 @@ class DeliverDataList extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
       child: Container(
+        height: MediaQuery.of(context).size.width * 0.06,
+        // decoration: BoxDecoration(
+        //   borderRadius: BorderRadius.all(
+        //       Radius.circular(MediaQuery.of(context).size.width * 0.02)),
+        //   color: Colors.white,
+        //   boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 2.0)],
+        // ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
