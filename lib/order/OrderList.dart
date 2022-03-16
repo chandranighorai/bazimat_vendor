@@ -14,7 +14,6 @@ class OrderList extends StatelessWidget {
         child: Row(
           children: [
             Container(
-                //color: Colors.amber,
                 width: MediaQuery.of(context).size.width / 2.2,
                 child: Text("${cartData.foodName}")),
             Container(

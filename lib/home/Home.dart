@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bazimat_vendor_app/drawer/Navigation.dart';
 import 'package:bazimat_vendor_app/home/HomePageList.dart';
 import 'package:bazimat_vendor_app/utils/AppColors.dart';
@@ -78,19 +80,22 @@ class _HomeState extends State<Home> {
             )
           : RefreshIndicator(
               onRefresh: () => _onRefresh(),
-              child: Container(
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                child: GridView.builder(
-                    itemCount: dashBoardData.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        childAspectRatio: (MediaQuery.of(context).size.width /
-                            MediaQuery.of(context).size.height *
-                            1.8)),
-                    itemBuilder: (BuildContext context, int index) {
-                      return HomePageList(dataList: dashBoardData[index]);
-                    }),
+              child: WillPopScope(
+                onWillPop: () => _onWillPopScope(),
+                child: Container(
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  child: GridView.builder(
+                      itemCount: dashBoardData.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: (MediaQuery.of(context).size.width /
+                              MediaQuery.of(context).size.height *
+                              1.8)),
+                      itemBuilder: (BuildContext context, int index) {
+                        return HomePageList(dataList: dashBoardData[index]);
+                      }),
+                ),
               ),
             ),
       //),
@@ -148,5 +153,27 @@ class _HomeState extends State<Home> {
     } on DioError catch (e) {
       print(e.toString());
     }
+  }
+
+  _onWillPopScope() {
+    return showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: Text("Are you sure to exit?"),
+              actions: [
+                TextButton(
+                    onPressed: () => exit(0),
+                    child: Text(
+                      "Yes",
+                      style: TextStyle(color: AppColors.buttonColor),
+                    )),
+                TextButton(
+                    onPressed: () => Navigator.of(context).pop(false),
+                    child: Text(
+                      "No",
+                      style: TextStyle(color: AppColors.buttonColor),
+                    ))
+              ],
+            ));
   }
 }

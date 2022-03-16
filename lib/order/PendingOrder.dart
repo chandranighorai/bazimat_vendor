@@ -1,3 +1,4 @@
+import 'package:bazimat_vendor_app/order/OrderDetails.dart';
 import 'package:bazimat_vendor_app/order/PendingList.dart';
 import 'package:bazimat_vendor_app/order/PendingModel.dart';
 import 'package:bazimat_vendor_app/utils/AppConst.dart';
@@ -20,10 +21,8 @@ class _PendingOrderState extends State<PendingOrder> {
   _onRefresh() {
     Future.delayed(Duration(milliseconds: 1000));
     setState(() {
-      _pendingOrderList = _getPendingOrderList();
-      // Navigator.of(context).pushAndRemoveUntil(
-      //     MaterialPageRoute(builder: (context) => PendingOrder()),
-      //     (route) => false);
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => OrderDetails()));
     });
   }
 
