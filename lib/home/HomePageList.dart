@@ -28,7 +28,7 @@ class _HomePageListState extends State<HomePageList> {
               boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 6.0)]),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,      
             children: [
               Container(
                 height: MediaQuery.of(context).size.width * 0.07,

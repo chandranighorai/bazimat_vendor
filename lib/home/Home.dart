@@ -64,6 +64,12 @@ class _HomeState extends State<Home> {
               style: TextStyle(color: AppColors.buttonColor),
             ),
             Spacer(),
+            IconButton(
+                onPressed: () => _onRefresh(),
+                icon: Icon(Icons.refresh, color: Colors.grey)),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.02,
+            ),
             Text(
               dateFormatter.toString(),
               style: TextStyle(

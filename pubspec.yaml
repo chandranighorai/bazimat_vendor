@@ -68,6 +68,8 @@ flutter:
     - images/padlock.png
     - images/insurance.png
     - images/info.png
+    - images/merchant_logo.png
+    - images/vendor.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

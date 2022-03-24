@@ -26,7 +26,7 @@
                  Flutter's first frame. -->
             <meta-data
               android:name="io.flutter.embedding.android.SplashScreenDrawable"
-              android:resource="@drawable/screen"
+              android:resource="@drawable/vendor"
               />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

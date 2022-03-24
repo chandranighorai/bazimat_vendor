@@ -28,9 +28,20 @@ class _OrderDetailsState extends State<OrderDetails> {
                 Navigator.pop(context);
               }),
           elevation: 0,
-          title: Text(
-            "Order History",
-            style: TextStyle(color: AppColors.buttonColor),
+          title: Row(
+            children: [
+              Text(
+                "Order History",
+                style: TextStyle(color: AppColors.buttonColor),
+              ),
+              Spacer(),
+              IconButton(
+                  icon: Icon(
+                    Icons.refresh,
+                    color: Colors.grey,
+                  ),
+                  onPressed: () => _onRefresh())
+            ],
           ),
           bottom: TabBar(
             indicatorColor: AppColors.buttonColor,
@@ -53,5 +64,10 @@ class _OrderDetailsState extends State<OrderDetails> {
             children: [PendingOrder(), DeliveredOrder()]),
       ),
     );
+  }
+
+  _onRefresh() {
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => OrderDetails()));
   }
 }

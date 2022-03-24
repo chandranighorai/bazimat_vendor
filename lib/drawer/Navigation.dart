@@ -32,8 +32,8 @@ class _NavigationState extends State<Navigation> {
                 width: MediaQuery.of(context).size.width / 6,
                 //color: Colors.white,
                 decoration: BoxDecoration(
-                    image:
-                        DecorationImage(image: AssetImage("images/logo.png"))),
+                    image: DecorationImage(
+                        image: AssetImage("images/merchant_logo.png"))),
               )),
             ),
             SizedBox(),
