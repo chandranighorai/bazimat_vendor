@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "44240489462",
+    "project_id": "bazimat-vendor",
+    "storage_bucket": "bazimat-vendor.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:44240489462:android:c8e52e254535b4c470d5d7",
+        "android_client_info": {
+          "package_name": "com.drinks.bazimat_vendor_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "44240489462-i2f3pijv68vrfcufrvdrtaeftgpma7bh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_o_enDt9B-BvI5m0fUbIC8mbWtOSTFo0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "44240489462-i2f3pijv68vrfcufrvdrtaeftgpma7bh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

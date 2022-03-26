@@ -1,7 +1,19 @@
 import 'package:bazimat_vendor_app/getStart.dart';
 import 'package:flutter/material.dart';
+//import 'package:firebase_messaging/firebase_messaging.dart';
+//import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+//import 'package:firebase_core/firebase_core.dart';
 
+// Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async
+// {
+//     await Firebase.init
+// }
 void main() {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
+  // FirebaseMessaging.instance.getToken().then((value) {
+  //   print("Fcm in vendor app..." + value.toString());
+  // });
   runApp(MyApp());
 }
 
