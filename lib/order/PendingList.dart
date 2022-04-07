@@ -325,8 +325,8 @@ class _PendingListState extends State<PendingList> {
       ),
     );
   }
-
   _updateStatus(String statusValue) async {
+    print("statusVal..." + statusValue.toString());
     try {
       SharedPreferences pref = await SharedPreferences.getInstance();
       var token = pref.getString("token");

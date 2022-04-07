@@ -12,6 +12,7 @@ class DeliveredList extends StatelessWidget {
   Widget build(BuildContext context) {
     var address = json.decode(dataList.deliveryAddress);
     print("Addr..." + address["address"].toString());
+    print("boy name..." + dataList.deliveryBoyName.toString());
     return Card(
       color: Colors.grey[50],
       child: Padding(

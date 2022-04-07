@@ -11,4 +11,5 @@ class Const {
   static String completedOrder = appUrl + "vendor/completed-orders";
   static String orderUpdate = appUrl + "vendor/update-order-status";
   static String dashboardHome = appUrl + "vendor/dashboard";
+  static String updateFcm = appUrl + "vendor/update-fcm-token";
 }
