@@ -12,7 +12,7 @@ class DeliveredList extends StatelessWidget {
   Widget build(BuildContext context) {
     var address = json.decode(dataList.deliveryAddress);
     print("Addr..." + address["address"].toString());
-    print("boy name..." + dataList.deliveryBoyName.toString());
+    print("boy name..." + dataList.deliveryBoyDetails.length.toString());
     return Card(
       color: Colors.grey[50],
       child: Padding(
@@ -71,6 +71,7 @@ class DeliveredList extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               child: ListView.builder(
                   shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
                   itemCount: dataList.cartDetails.length,
                   itemBuilder: (BuildContext context, int index) {
                     return DeliverDataList(
@@ -82,11 +83,22 @@ class DeliveredList extends StatelessWidget {
             ),
             Row(
               children: [
-                Text(
-                  "Delivered by: ${dataList.deliveryBoyName}",
-                  style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.width * 0.04,
-                      color: Colors.grey),
+                Container(
+                  width: MediaQuery.of(context).size.width / 1.2,
+                  //color: Colors.amber,
+                  child: Text(
+                    dataList.deliveryBoyDetails.length == 0
+                        ? ""
+                        : "Deliver Boy Name: " +
+                            dataList.deliveryBoyDetails[0].fName +
+                            " " +
+                            // " jkjkjkjkjkjkkkkkkkkkkkkkkkkkkk",
+                            dataList.deliveryBoyDetails[0].lName,
+                    //"Delivered by: ${dataList.deliveryBoyName}",
+                    style: TextStyle(
+                        fontSize: MediaQuery.of(context).size.width * 0.04,
+                        color: Colors.grey),
+                  ),
                 ),
                 // Spacer(),
                 // Text(
