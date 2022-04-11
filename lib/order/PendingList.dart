@@ -325,6 +325,7 @@ class _PendingListState extends State<PendingList> {
       ),
     );
   }
+
   _updateStatus(String statusValue) async {
     print("statusVal..." + statusValue.toString());
     try {
@@ -357,7 +358,8 @@ class _PendingListState extends State<PendingList> {
         //   });
         // }
       } else {
-        showCustomToast(response.data['errors']['message']);
+        //print("kkkkkk...." + response.data['errors'][0]['message'].toString());
+        showCustomToast(response.data['errors'][0]['message']);
       }
     } on DioError catch (e) {
       print(e.toString());
