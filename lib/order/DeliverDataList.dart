@@ -29,7 +29,9 @@ class DeliverDataList extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 //color: Colors.red,
                 width: MediaQuery.of(context).size.width / 4,
-                child: Text("${cartData.quantity}")),
+                child: Text("Qty: x${cartData.quantity}",
+                    style: TextStyle(
+                        fontSize: MediaQuery.of(context).size.width * 0.03))),
             Spacer(),
             Text(
               "\u20B9${cartData.foodAmount}",
